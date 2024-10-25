@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.introo {
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    padding: 20px;
+}
+
+#intro, #main-content {
+    text-align: center;
+    background: -webkit-linear-gradient(#015c8b, #099beb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 1; /* Start with fully visible text */
+    transition: opacity 1s ease-in-out;
+}
+
+.big {
+    font-size: 60px;
+}
+
+.bigg {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+#main-content {
+    display: none;
+    opacity: 0;
+}

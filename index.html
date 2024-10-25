@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .introo {
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        #intro, #main-content {
+            text-align: center;
+            background: -webkit-linear-gradient(#015c8b, #099beb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 1; /* Start with fully visible text */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .big {
+            font-size: 60px;
+        }
+
+        .bigg {
+            font-size: 30px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #main-content {
+            display: none;
+            opacity: 0;
+        }
+
+        .what {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+            overflow: hidden; /* Hide overflow */
+        }
+
+        .parallax {
+            background-image: url('./paradox.jpg'); /* Replace with your image URL */
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-attachment: fixed; /* Parallax effect */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; /* Cover the entire section */
+            z-index: 1; /* Layering */
+            opacity: 0.5; /* Adjust the opacity as needed */
+}
+
+        
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2; /* Layering to ensure text is on top */
+            color: #000; /* Text color */
+            text-align: center;
+            padding: 20px;
+}
+
+        .core {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #f0f0f0;
+            height: 100vh;
+        }
+
+        .core-content {
+            display: flex;
+            align-items: center;
+            gap: 0px; /* Space between the text and the image */
+            flex-direction: row;
+        }
+
+        .core-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .core-text .bigg {
+            font-size: 50px;
+            color: #015c8b;
+        }
+
+        .core-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .core-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Optional: Rounded corners */
+        }
+
+        .course {
+    background-color: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.course-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.course-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+.course-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.course-card h3 {
+    font-size: 24px;
+    color: #015c8b;
+    margin-bottom: 10px;
+}
+
+.course-card p {
+    font-size: 16px;
+    color: #555555;
+}
+
+/* Accordion Styling */
+.accordion-section {
+    padding: 50px 20px;
+    background-color: #f0f0f0;
+}
+
+.accordion {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    transition: max-height 0.2s ease-out;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: #015c8b;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#c {
+    text-align: center;
+}
+
+.accordion-content {
+    background-color: #ffffff;
+    max-height: 0;
+    padding: 0 15px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    font-size: 16px;
+    color: #555;
+}
+
+.accordion-content p {
+    padding: 15px 0;
+    margin: 0;
+}
+
+.accordion.active .accordion-content {
+    max-height: 200px; /* Set a maximum height for the expanded content */
+}
+
+.accordion-icon {
+    transform: rotate(0);
+    transition: transform 0.3s;
+}
+
+.accordion.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.contactt {
+    position: relative; /* Relative positioning to position child elements */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Vertically center the form */
+    justify-content: center; /* Horizontally center the form */
+    overflow: hidden; /* Hide overflow */
+}
+
+.parallax {
+    background-image: url('./paradox.jpg'); /* Replace with your image URL */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-attachment: fixed; /* Parallax effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Cover the entire section */
+    z-index: 1; /* Layering */
+    opacity: 0.5; /* Adjust the opacity as needed */
+}
+
+.contact-form {
+    position: relative; /* Position relative to allow z-index to work */
+    z-index: 2; /* Ensure form is above the parallax background */
+    padding: 50px 20px;
+    background-color: rgba(249, 249, 249, 0.9); /* Slightly transparent background */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 600px; /* Limit the width of the form */
+    width: 100%; /* Make the form responsive */
+    margin: 0; /* Remove any default margin */
+}
+
+
+
+.contact-form h2 {
+    font-size: 28px;
+    color: #015c8b;
+    margin-bottom: 20px;
+}
+
+.contact-form label {
+    display: block;
+    text-align: left;
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%; /* Full width */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #015c8b; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+.contact-form button {
+    background-color: #015c8b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.contact-form button:hover {
+    background-color: #099beb; /* Lighter blue on hover */
+}
+
+#formStatus {
+    margin-top: 15px;
+    font-size: 16px;
+    color: green; /* Default color for success message */
+}
+
+#formStatus.error {
+    color: red; /* Error message color */
+}
+
+
+
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extem Education</title>
+</head>
+<body>
+    <section class="introo">
+        <div id="intro">
+            <h1 class="big">Welcome to EXTEM EDUCATION</h1>
+            <p>We are excited to have you here!</p>
+        </div>
+        <div id="main-content" class="hidden">
+            <h2 class="bigg">Who are we?</h2><br>
+            <p>This is where you can add information about your company. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime facilis mollitia perspiciatis cumque, laudantium sit<br> tempore deleniti placeat itaque nulla expedita delectus corporis reiciendis quod accusamus in ab nemo dolor adipisci quos! Aspernatur quia eum natus doloremque ipsum repellat quisquam voluptate nemo, accusamus aliquid corrupti nesciunt cumque laudantium sit consequatur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae dicta magnam tempore hic,<br> accusantium, quae rerum doloribus consequuntur odio dolores commodi earum. Aliquam mollitia non dicta consectetur ex expedita laborum sit vitae eveniet, veritatis voluptates harum ea nihil voluptatem maiores, nobis quibusdam! Voluptate aperiam et dicta delectus cumque cum placeat.</p>
+        </div>
+    </section>
+
+    <section class="what">
+        <div class="parallax"></div>
+        <div class="text-overlay">
+            <h2 class="bigg">Our Mission</h2>
+            <p>At EXTEM EDUCATION, we strive to empower students through quality education and innovative learning experiences.</p>
+        </div>
+    </section>
+    <section class="core">
+        <div class="core-content">
+            <div class="core-text">
+                <h2 class="bigg" class="name">Our Core Team</h2>
+            </div>
+            <div class="core-image">
+                <img src="./core.png" alt="Core Team Photo">
+            </div>
+        </div>
+    </section>
+    <section class="course">
+        <section class="course">
+            <h2 class="bigg">Our Courses</h2>
+            <div class="course-content">
+                <div class="course-card">
+                    <img src="./fyv.jpg" alt="Course 1">
+                    <h3>Course 1</h3>
+                    <p>Learn the basics of Course 1. It covers essential topics to get you started.</p>
+                </div>
+                <div class="course-card">
+                    <img src="./mt.jpg" alt="Course 2">
+                    <h3>Course 2</h3>
+                    <p>Advance your skills with Course 2, focusing on more complex concepts.</p>
+                </div>
+                <div class="course-card">
+                    <img src="./fc.jpg" alt="Course 3">
+                    <h3>Course 3</h3>
+                    <p>Master the techniques in Course 3 and become proficient in this area.</p>
+                </div>
+                <div class="course-card">
+                    <img src="./ai.jpg" alt="Course 4">
+                    <h3>Course 4</h3>
+                    <p>Explore advanced topics in Course 4 for expert-level understanding.</p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="accordion-section">
+        <h2 class="bigg" id="c">Frequently Asked Questions</h2>
+        <div class="accordion">
+            <div class="accordion-header">
+                <span>What is EXTEM EDUCATION?</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p>EXTEM EDUCATION is a platform that empowers students by providing quality educational resources and innovative learning experiences.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">
+                <span>How do I enroll in a course?</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p>To enroll in a course, browse our available courses, select the one you are interested in, and follow the enrollment instructions on the course page.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">
+                <span>Are there any prerequisites for the courses?</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p>Some courses have prerequisites that should be completed beforehand. Each course page will provide details on any required prior knowledge.</p>
+            </div>
+        </div>
+        <div class="accordion">
+            <div class="accordion-header">
+                <span>What support is available for students?</span>
+                <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-content">
+                <p>We offer support through our community forums, live chat with instructors, and dedicated support staff to help you throughout your learning journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contactt">
+        <div class="parallax"></div> <!-- Parallax background added here -->
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email (optional):</label>
+                <input type="email" id="email" name="email">
+                
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+            <p id="formStatus"></p>
+        </div>
+    </section>
+    
+    
+    
+    
+    
+    <script>
+        window.onload = function() {
+    const intro = document.getElementById('intro');
+    const mainContent = document.getElementById('main-content');
+
+    // Fade out intro
+    setTimeout(() => {
+        intro.style.opacity = 0;
+        setTimeout(() => {
+            intro.classList.add('hidden');
+            mainContent.style.display = 'block';
+            setTimeout(() => {
+                mainContent.style.opacity = 1;
+            }, 50); // Delay to ensure the main content is displayed before fading in
+        }, 1000); // Match the fade out duration
+    }, 3000); // Show intro for 3 seconds
+};
+
+
+// Accordion functionality
+document.querySelectorAll('.accordion-header').forEach((accordionHeader) => {
+    accordionHeader.addEventListener('click', () => {
+        const accordion = accordionHeader.parentElement;
+        accordion.classList.toggle('active');
+
+        // Close other open accordions
+        document.querySelectorAll('.accordion').forEach((item) => {
+            if (item !== accordion) {
+                item.classList.remove('active');
+            }
+        });
+    });
+});
+
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyy1UYohXWKdZFqEI1IFa4pn_Vh0rR7kmDW_L1fcGJ81JJKHSinKeCh2dqXeEclDSUJpA/exec'; // Replace with the URL you get from Google Apps Script
+    const form = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => {
+            formStatus.textContent = 'Form submitted successfully!';
+            form.reset();
+        })
+        .catch(error => {
+            formStatus.textContent = 'Form submission failed. Please try again later.';
+        });
+    });
+
+
+    </script>
+</body>
+</html>
